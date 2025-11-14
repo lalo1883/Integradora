@@ -14,13 +14,15 @@
     ],
     "ios": {
       "supportsTablet": true,
-      "bundleIdentifier": "com.videojuego.app"
+      "bundleIdentifier": "com.integradora",
+      "googleServicesFile": "./GoogleService-Info.plist"
     },
     "android": {
       "adaptiveIcon": {
         "backgroundColor": "#1a1a2e"
       },
-      "package": "com.videojuego.app"
+      "package": "com.integradora",
+      "googleServicesFile": "./google-services.json"
     }
   }
 }

@@ -8,26 +8,59 @@ import {
   Alert,
   KeyboardAvoidingView,
   Platform,
+  ActivityIndicator,
 } from 'react-native';
+import {loginUser, registerUser} from '../services/authService';
 
 const LoginScreen = ({navigation}) => {
-  const [username, setUsername] = useState('');
+  const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [isRegister, setIsRegister] = useState(false);
+  const [loading, setLoading] = useState(false);
 
-  const handleLogin = () => {
-    if (!username.trim() || !password.trim()) {
+  const handleSubmit = async () => {
+    if (!email.trim() || !password.trim()) {
       Alert.alert('Error', 'Por favor completa todos los campos');
       return;
     }
 
-    // Simulación de login - en producción esto sería una llamada a API
-    if (username.length >= 3 && password.length >= 4) {
-      navigation.replace('Home');
-    } else {
-      Alert.alert(
-        'Error',
-        'Usuario debe tener al menos 3 caracteres y contraseña al menos 4',
-      );
+    // Validar formato de email básico
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(email)) {
+      Alert.alert('Error', 'Por favor ingresa un correo electrónico válido');
+      return;
+    }
+
+    if (password.length < 6) {
+      Alert.alert('Error', 'La contraseña debe tener al menos 6 caracteres');
+      return;
+    }
+
+    setLoading(true);
+
+    try {
+      let result;
+      if (isRegister) {
+        result = await registerUser(email, password);
+      } else {
+        result = await loginUser(email, password);
+      }
+
+      if (result.success) {
+        // La navegación se maneja automáticamente en App.js
+        Alert.alert(
+          'Éxito',
+          isRegister
+            ? '¡Registro exitoso! Bienvenido'
+            : '¡Bienvenido de nuevo!',
+        );
+      } else {
+        Alert.alert('Error', result.error);
+      }
+    } catch (error) {
+      Alert.alert('Error', 'Ocurrió un error inesperado');
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -36,18 +69,26 @@ const LoginScreen = ({navigation}) => {
       behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
       style={styles.container}>
       <View style={styles.content}>
-        <Text style={styles.title}>Bienvenido</Text>
-        <Text style={styles.subtitle}>Inicia sesión para continuar</Text>
+        <Text style={styles.title}>
+          {isRegister ? 'Crear Cuenta' : 'Bienvenido'}
+        </Text>
+        <Text style={styles.subtitle}>
+          {isRegister
+            ? 'Regístrate para continuar'
+            : 'Inicia sesión para continuar'}
+        </Text>
 
         <View style={styles.form}>
           <TextInput
             style={styles.input}
-            placeholder="Usuario"
+            placeholder="Correo electrónico"
             placeholderTextColor="#999"
-            value={username}
-            onChangeText={setUsername}
+            value={email}
+            onChangeText={setEmail}
             autoCapitalize="none"
             autoCorrect={false}
+            keyboardType="email-address"
+            editable={!loading}
           />
 
           <TextInput
@@ -59,10 +100,31 @@ const LoginScreen = ({navigation}) => {
             secureTextEntry
             autoCapitalize="none"
             autoCorrect={false}
+            editable={!loading}
           />
 
-          <TouchableOpacity style={styles.button} onPress={handleLogin}>
-            <Text style={styles.buttonText}>Iniciar Sesión</Text>
+          <TouchableOpacity
+            style={[styles.button, loading && styles.buttonDisabled]}
+            onPress={handleSubmit}
+            disabled={loading}>
+            {loading ? (
+              <ActivityIndicator color="#fff" />
+            ) : (
+              <Text style={styles.buttonText}>
+                {isRegister ? 'Registrarse' : 'Iniciar Sesión'}
+              </Text>
+            )}
+          </TouchableOpacity>
+
+          <TouchableOpacity
+            style={styles.switchButton}
+            onPress={() => setIsRegister(!isRegister)}
+            disabled={loading}>
+            <Text style={styles.switchText}>
+              {isRegister
+                ? '¿Ya tienes cuenta? Inicia sesión'
+                : '¿No tienes cuenta? Regístrate'}
+            </Text>
           </TouchableOpacity>
         </View>
       </View>
@@ -117,6 +179,18 @@ const styles = StyleSheet.create({
     color: '#fff',
     fontSize: 18,
     fontWeight: 'bold',
+  },
+  buttonDisabled: {
+    opacity: 0.6,
+  },
+  switchButton: {
+    marginTop: 20,
+    alignItems: 'center',
+  },
+  switchText: {
+    color: '#e94560',
+    fontSize: 14,
+    fontWeight: '600',
   },
 });
 
