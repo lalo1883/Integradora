@@ -1,5 +1,27 @@
 {
-  "name": "VideojuegoApp",
-  "displayName": "Videojuego App"
+  "expo": {
+    "name": "Videojuego App",
+    "slug": "videojuego-app",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "userInterfaceStyle": "dark",
+    "splash": {
+      "resizeMode": "contain",
+      "backgroundColor": "#1a1a2e"
+    },
+    "assetBundlePatterns": [
+      "**/*"
+    ],
+    "ios": {
+      "supportsTablet": true,
+      "bundleIdentifier": "com.videojuego.app"
+    },
+    "android": {
+      "adaptiveIcon": {
+        "backgroundColor": "#1a1a2e"
+      },
+      "package": "com.videojuego.app"
+    }
+  }
 }
 
