@@ -1,5 +1,5 @@
 import React from 'react';
-import {View, Text, StyleSheet, TouchableOpacity, Alert} from 'react-native';
+import {View, Text, StyleSheet, TouchableOpacity, Alert, Platform} from 'react-native';
 import {logoutUser, getCurrentUser} from '../services/authService';
 
 const HomeScreen = () => {
@@ -86,6 +86,7 @@ const styles = StyleSheet.create({
   logoutButton: {
     backgroundColor: '#e94560',
     margin: 20,
+    marginBottom: Platform.OS === 'ios' ? 100 : 90,
     borderRadius: 10,
     padding: 15,
     alignItems: 'center',

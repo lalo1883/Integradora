@@ -1,5 +1,5 @@
 import React from 'react';
-import {View, Text, StyleSheet, TouchableOpacity, Alert} from 'react-native';
+import {View, Text, StyleSheet, TouchableOpacity, Alert, Platform} from 'react-native';
 import {logoutUser, getCurrentUser} from '../services/authService';
 
 const AccountScreen = () => {
@@ -82,6 +82,8 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     width: '100%',
     maxWidth: 300,
+    marginTop: 20,
+    marginBottom: Platform.OS === 'ios' ? 100 : 90,
   },
   logoutButtonText: {
     color: '#fff',
