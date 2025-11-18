@@ -107,6 +107,51 @@ const AccountScreen = () => {
             </View>
           </View>
         </View>
+
+        <View style={styles.optionsSection}>
+          <Text style={styles.sectionTitle}>Configuración</Text>
+          <TouchableOpacity style={styles.optionCard} activeOpacity={0.7}>
+            <View style={styles.optionLeft}>
+              <Text style={styles.optionIcon}>🔔</Text>
+              <Text style={styles.optionText}>Notificaciones</Text>
+            </View>
+            <Text style={styles.optionArrow}>›</Text>
+          </TouchableOpacity>
+
+          <TouchableOpacity style={styles.optionCard} activeOpacity={0.7}>
+            <View style={styles.optionLeft}>
+              <Text style={styles.optionIcon}>🎨</Text>
+              <Text style={styles.optionText}>Tema</Text>
+            </View>
+            <Text style={styles.optionArrow}>›</Text>
+          </TouchableOpacity>
+
+          <TouchableOpacity style={styles.optionCard} activeOpacity={0.7}>
+            <View style={styles.optionLeft}>
+              <Text style={styles.optionIcon}>🔒</Text>
+              <Text style={styles.optionText}>Privacidad</Text>
+            </View>
+            <Text style={styles.optionArrow}>›</Text>
+          </TouchableOpacity>
+
+          <TouchableOpacity style={styles.optionCard} activeOpacity={0.7}>
+            <View style={styles.optionLeft}>
+              <Text style={styles.optionIcon}>ℹ️</Text>
+              <Text style={styles.optionText}>Acerca de</Text>
+            </View>
+            <Text style={styles.optionArrow}>›</Text>
+          </TouchableOpacity>
+        </View>
+
+        <View style={styles.logoutSection}>
+          <TouchableOpacity 
+            style={styles.logoutButton} 
+            onPress={handleLogout}
+            activeOpacity={0.8}>
+            <Text style={styles.logoutIcon}>🚪</Text>
+            <Text style={styles.logoutButtonText}>Cerrar Sesión</Text>
+          </TouchableOpacity>
+        </View>
       </ScrollView>
     </View>
   );
@@ -293,6 +338,78 @@ const styles = StyleSheet.create({
     fontSize: 14,
     color: '#aaa',
     fontWeight: '500',
+  },
+  optionsSection: {
+    paddingHorizontal: 20,
+    marginTop: 20,
+  },
+  optionCard: {
+    backgroundColor: '#16213e',
+    borderRadius: 12,
+    padding: 16,
+    marginBottom: 10,
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    borderWidth: 1,
+    borderColor: '#0f3460',
+    shadowColor: '#000',
+    shadowOffset: {
+      width: 0,
+      height: 1,
+    },
+    shadowOpacity: 0.1,
+    shadowRadius: 2,
+    elevation: 2,
+  },
+  optionLeft: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    flex: 1,
+  },
+  optionIcon: {
+    fontSize: 20,
+    marginRight: 12,
+  },
+  optionText: {
+    fontSize: 16,
+    color: '#fff',
+    fontWeight: '500',
+  },
+  optionArrow: {
+    fontSize: 24,
+    color: '#e94560',
+    fontWeight: 'bold',
+  },
+  logoutSection: {
+    paddingHorizontal: 20,
+    marginTop: 30,
+    marginBottom: 20,
+  },
+  logoutButton: {
+    backgroundColor: '#e94560',
+    borderRadius: 12,
+    padding: 16,
+    alignItems: 'center',
+    flexDirection: 'row',
+    justifyContent: 'center',
+    shadowColor: '#e94560',
+    shadowOffset: {
+      width: 0,
+      height: 4,
+    },
+    shadowOpacity: 0.3,
+    shadowRadius: 8,
+    elevation: 6,
+  },
+  logoutIcon: {
+    fontSize: 20,
+    marginRight: 10,
+  },
+  logoutButtonText: {
+    color: '#fff',
+    fontSize: 16,
+    fontWeight: 'bold',
   },
 });
 
