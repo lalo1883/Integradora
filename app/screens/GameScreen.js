@@ -1,7 +1,11 @@
-import React from 'react';
-import {View, Text, StyleSheet, Platform, ScrollView} from 'react-native';
+import React, {useState} from 'react';
+import {View, Text, StyleSheet, Platform, ScrollView, TouchableOpacity} from 'react-native';
 
 const GameScreen = () => {
+  const [selectedCategory, setSelectedCategory] = useState('Todos');
+
+  const categories = ['Todos', 'Guías', 'Estrategias', 'Descubrimientos', 'Análisis', 'Ayuda'];
+
   const forumPosts = [
     {
       id: '1',
@@ -56,6 +60,30 @@ const GameScreen = () => {
         <Text style={styles.title}>Foro del Videojuego</Text>
         <Text style={styles.subtitle}>Comparte información y estrategias</Text>
       </View>
+
+      <ScrollView 
+        horizontal
+        showsHorizontalScrollIndicator={false}
+        style={styles.categoriesContainer}
+        contentContainerStyle={styles.categoriesContent}>
+        {categories.map((category) => (
+          <TouchableOpacity
+            key={category}
+            style={[
+              styles.categoryFilter,
+              selectedCategory === category && styles.categoryFilterActive,
+            ]}
+            onPress={() => setSelectedCategory(category)}>
+            <Text
+              style={[
+                styles.categoryFilterText,
+                selectedCategory === category && styles.categoryFilterTextActive,
+              ]}>
+              {category}
+            </Text>
+          </TouchableOpacity>
+        ))}
+      </ScrollView>
 
       <ScrollView 
         style={styles.scrollView}
@@ -113,6 +141,35 @@ const styles = StyleSheet.create({
   subtitle: {
     fontSize: 14,
     color: '#aaa',
+  },
+  categoriesContainer: {
+    marginBottom: 15,
+    paddingHorizontal: 20,
+  },
+  categoriesContent: {
+    paddingRight: 20,
+  },
+  categoryFilter: {
+    backgroundColor: '#16213e',
+    borderRadius: 20,
+    paddingHorizontal: 16,
+    paddingVertical: 8,
+    marginRight: 10,
+    borderWidth: 1,
+    borderColor: '#0f3460',
+  },
+  categoryFilterActive: {
+    backgroundColor: '#e94560',
+    borderColor: '#e94560',
+  },
+  categoryFilterText: {
+    fontSize: 13,
+    color: '#aaa',
+    fontWeight: '500',
+  },
+  categoryFilterTextActive: {
+    color: '#fff',
+    fontWeight: 'bold',
   },
   scrollView: {
     flex: 1,
