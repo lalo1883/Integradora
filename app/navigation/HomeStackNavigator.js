@@ -14,12 +14,18 @@ const HomeStackNavigator = () => {
         headerShown: true,
         headerStyle: {
           backgroundColor: '#16213e',
+          borderBottomWidth: 1,
+          borderBottomColor: '#0f3460',
+          elevation: 0,
+          shadowOpacity: 0,
         },
         headerTintColor: '#fff',
         headerTitleStyle: {
           fontWeight: 'bold',
+          fontSize: 18,
         },
         headerBackTitleVisible: false,
+        headerShadowVisible: false,
       }}>
       <Stack.Screen
         name="HomeMain"

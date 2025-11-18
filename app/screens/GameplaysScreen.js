@@ -92,10 +92,10 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#1a1a2e',
-    paddingTop: 60,
   },
   header: {
     paddingHorizontal: 20,
+    paddingTop: 20,
     marginBottom: 20,
   },
   title: {
