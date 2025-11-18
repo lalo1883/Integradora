@@ -63,10 +63,28 @@ const GameScreen = () => {
         showsVerticalScrollIndicator={false}>
         {forumPosts.map((post) => (
           <View key={post.id} style={styles.postCard}>
+            <View style={styles.postHeader}>
+              <View style={styles.categoryBadge}>
+                <Text style={styles.categoryText}>{post.category}</Text>
+              </View>
+            </View>
             <Text style={styles.postTitle}>{post.title}</Text>
-            <View style={styles.postMeta}>
-              <Text style={styles.postAuthor}>Por {post.author}</Text>
-              <Text style={styles.postTime}>hace {post.time}</Text>
+            <View style={styles.postFooter}>
+              <View style={styles.postAuthorContainer}>
+                <Text style={styles.authorIcon}>👤</Text>
+                <Text style={styles.postAuthor}>{post.author}</Text>
+              </View>
+              <View style={styles.postStats}>
+                <View style={styles.statItem}>
+                  <Text style={styles.statIcon}>💬</Text>
+                  <Text style={styles.statText}>{post.replies}</Text>
+                </View>
+                <View style={styles.statItem}>
+                  <Text style={styles.statIcon}>👁️</Text>
+                  <Text style={styles.statText}>{post.views}</Text>
+                </View>
+                <Text style={styles.postTime}>{post.time}</Text>
+              </View>
             </View>
           </View>
         ))}
@@ -110,25 +128,79 @@ const styles = StyleSheet.create({
     marginBottom: 12,
     borderWidth: 1,
     borderColor: '#0f3460',
+    shadowColor: '#000',
+    shadowOffset: {
+      width: 0,
+      height: 2,
+    },
+    shadowOpacity: 0.1,
+    shadowRadius: 3.84,
+    elevation: 3,
+  },
+  postHeader: {
+    marginBottom: 10,
+  },
+  categoryBadge: {
+    alignSelf: 'flex-start',
+    backgroundColor: '#e94560',
+    borderRadius: 8,
+    paddingHorizontal: 10,
+    paddingVertical: 4,
+  },
+  categoryText: {
+    fontSize: 11,
+    fontWeight: 'bold',
+    color: '#fff',
+    letterSpacing: 0.3,
   },
   postTitle: {
     fontSize: 16,
     fontWeight: '600',
     color: '#fff',
-    marginBottom: 10,
+    marginBottom: 12,
+    lineHeight: 22,
   },
-  postMeta: {
+  postFooter: {
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
   },
+  postAuthorContainer: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    flex: 1,
+  },
+  authorIcon: {
+    fontSize: 14,
+    marginRight: 6,
+  },
   postAuthor: {
     fontSize: 13,
     color: '#aaa',
+    fontWeight: '500',
+  },
+  postStats: {
+    flexDirection: 'row',
+    alignItems: 'center',
+  },
+  statItem: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    marginRight: 12,
+  },
+  statIcon: {
+    fontSize: 12,
+    marginRight: 4,
+  },
+  statText: {
+    fontSize: 12,
+    color: '#aaa',
+    fontWeight: '500',
   },
   postTime: {
-    fontSize: 13,
-    color: '#aaa',
+    fontSize: 12,
+    color: '#6b7280',
+    fontWeight: '500',
   },
 });
 
