@@ -2,7 +2,7 @@ import React, {useState, useEffect} from 'react';
 import {NavigationContainer} from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import LoginScreen from './app/screens/LoginScreen';
-import HomeScreen from './app/screens/HomeScreen';
+import BottomTabNavigator from './app/navigation/BottomTabNavigator';
 import {onAuthStateChange} from './app/services/authService';
 import './app/config/firebase'; // Inicializar Firebase
 
@@ -30,7 +30,7 @@ const App = () => {
     <NavigationContainer>
       <Stack.Navigator screenOptions={{headerShown: false}}>
         {user ? (
-          <Stack.Screen name="Home" component={HomeScreen} />
+          <Stack.Screen name="MainTabs" component={BottomTabNavigator} />
         ) : (
           <Stack.Screen name="Login" component={LoginScreen} />
         )}
