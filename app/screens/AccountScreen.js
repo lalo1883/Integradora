@@ -53,6 +53,38 @@ const AccountScreen = () => {
             <Text style={styles.memberBadgeText}>Miembro Premium</Text>
           </View>
         </View>
+
+        <View style={styles.infoSection}>
+          <View style={styles.infoCard}>
+            <View style={styles.infoIconContainer}>
+              <Text style={styles.infoIcon}>📧</Text>
+            </View>
+            <View style={styles.infoContent}>
+              <Text style={styles.infoLabel}>Correo Electrónico</Text>
+              <Text style={styles.infoValue}>{user?.email || 'N/A'}</Text>
+            </View>
+          </View>
+
+          <View style={styles.infoCard}>
+            <View style={styles.infoIconContainer}>
+              <Text style={styles.infoIcon}>📅</Text>
+            </View>
+            <View style={styles.infoContent}>
+              <Text style={styles.infoLabel}>Miembro desde</Text>
+              <Text style={styles.infoValue}>Noviembre 2025</Text>
+            </View>
+          </View>
+
+          <View style={styles.infoCard}>
+            <View style={styles.infoIconContainer}>
+              <Text style={styles.infoIcon}>🎮</Text>
+            </View>
+            <View style={styles.infoContent}>
+              <Text style={styles.infoLabel}>Nivel de Jugador</Text>
+              <Text style={styles.infoValue}>Experto</Text>
+            </View>
+          </View>
+        </View>
       </ScrollView>
     </View>
   );
@@ -147,6 +179,54 @@ const styles = StyleSheet.create({
     fontSize: 12,
     fontWeight: 'bold',
     letterSpacing: 0.5,
+  },
+  infoSection: {
+    paddingHorizontal: 20,
+    marginTop: 10,
+  },
+  infoCard: {
+    backgroundColor: '#16213e',
+    borderRadius: 12,
+    padding: 16,
+    marginBottom: 12,
+    flexDirection: 'row',
+    alignItems: 'center',
+    borderWidth: 1,
+    borderColor: '#0f3460',
+    shadowColor: '#000',
+    shadowOffset: {
+      width: 0,
+      height: 2,
+    },
+    shadowOpacity: 0.1,
+    shadowRadius: 3.84,
+    elevation: 3,
+  },
+  infoIconContainer: {
+    width: 50,
+    height: 50,
+    borderRadius: 12,
+    backgroundColor: '#0f3460',
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginRight: 15,
+  },
+  infoIcon: {
+    fontSize: 24,
+  },
+  infoContent: {
+    flex: 1,
+  },
+  infoLabel: {
+    fontSize: 12,
+    color: '#aaa',
+    marginBottom: 4,
+    fontWeight: '500',
+  },
+  infoValue: {
+    fontSize: 16,
+    color: '#fff',
+    fontWeight: '600',
   },
 });
 
