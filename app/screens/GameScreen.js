@@ -52,7 +52,45 @@ const GameScreen = () => {
       views: 298,
       time: '3d',
     },
+    {
+      id: '6',
+      title: 'Actualización 1.2: Nuevas Características',
+      author: 'DevTeam',
+      category: 'Análisis',
+      replies: 67,
+      views: 445,
+      time: '4d',
+    },
+    {
+      id: '7',
+      title: 'Mejor Build para Personaje Mago',
+      author: 'BuildMaster',
+      category: 'Estrategias',
+      replies: 29,
+      views: 178,
+      time: '5d',
+    },
+    {
+      id: '8',
+      title: 'Cómo Desbloquear el Final Secreto',
+      author: 'SecretHunter',
+      category: 'Guías',
+      replies: 52,
+      views: 312,
+      time: '6d',
+    },
   ];
+
+  const getCategoryColor = (category) => {
+    const colors = {
+      'Guías': '#e94560',
+      'Estrategias': '#4ade80',
+      'Descubrimientos': '#fbbf24',
+      'Análisis': '#3b82f6',
+      'Ayuda': '#a855f7',
+    };
+    return colors[category] || '#e94560';
+  };
 
   return (
     <View style={styles.container}>
@@ -92,14 +130,21 @@ const GameScreen = () => {
         {forumPosts.map((post) => (
           <View key={post.id} style={styles.postCard}>
             <View style={styles.postHeader}>
-              <View style={styles.categoryBadge}>
+              <View style={[
+                styles.categoryBadge,
+                {backgroundColor: getCategoryColor(post.category)},
+              ]}>
                 <Text style={styles.categoryText}>{post.category}</Text>
               </View>
             </View>
             <Text style={styles.postTitle}>{post.title}</Text>
             <View style={styles.postFooter}>
               <View style={styles.postAuthorContainer}>
-                <Text style={styles.authorIcon}>👤</Text>
+                <View style={styles.authorAvatar}>
+                  <Text style={styles.authorAvatarText}>
+                    {post.author.charAt(0).toUpperCase()}
+                  </Text>
+                </View>
                 <Text style={styles.postAuthor}>{post.author}</Text>
               </View>
               <View style={styles.postStats}>
@@ -190,19 +235,26 @@ const styles = StyleSheet.create({
       width: 0,
       height: 2,
     },
-    shadowOpacity: 0.1,
-    shadowRadius: 3.84,
-    elevation: 3,
+    shadowOpacity: 0.15,
+    shadowRadius: 4,
+    elevation: 4,
   },
   postHeader: {
     marginBottom: 10,
   },
   categoryBadge: {
     alignSelf: 'flex-start',
-    backgroundColor: '#e94560',
     borderRadius: 8,
     paddingHorizontal: 10,
     paddingVertical: 4,
+    shadowColor: '#000',
+    shadowOffset: {
+      width: 0,
+      height: 1,
+    },
+    shadowOpacity: 0.2,
+    shadowRadius: 2,
+    elevation: 2,
   },
   categoryText: {
     fontSize: 11,
@@ -227,9 +279,19 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     flex: 1,
   },
-  authorIcon: {
-    fontSize: 14,
-    marginRight: 6,
+  authorAvatar: {
+    width: 24,
+    height: 24,
+    borderRadius: 12,
+    backgroundColor: '#0f3460',
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginRight: 8,
+  },
+  authorAvatarText: {
+    fontSize: 10,
+    fontWeight: 'bold',
+    color: '#fff',
   },
   postAuthor: {
     fontSize: 13,
