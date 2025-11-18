@@ -43,32 +43,56 @@ const HomeScreen = ({navigation}) => {
         showsVerticalScrollIndicator={false}>
         <TouchableOpacity 
           style={styles.sectionCard}
+          activeOpacity={0.8}
           onPress={() => navigation.navigate('Gameplays')}>
-          <Text style={styles.sectionIcon}>🎮</Text>
-          <Text style={styles.sectionTitle}>Gamplays del Videojuego</Text>
-          <Text style={styles.sectionDescription}>
-            Mira los mejores gameplays y estrategias
-          </Text>
+          <View style={styles.cardContent}>
+            <View style={styles.iconContainer}>
+              <Text style={styles.sectionIcon}>🎮</Text>
+            </View>
+            <View style={styles.textContainer}>
+              <Text style={styles.sectionTitle}>Gamplays del Videojuego</Text>
+              <Text style={styles.sectionDescription}>
+                Mira los mejores gameplays y estrategias
+              </Text>
+            </View>
+            <Text style={styles.arrowIcon}>›</Text>
+          </View>
         </TouchableOpacity>
 
         <TouchableOpacity 
           style={styles.sectionCard}
+          activeOpacity={0.8}
           onPress={() => navigation.navigate('TopGlobales')}>
-          <Text style={styles.sectionIcon}>🏆</Text>
-          <Text style={styles.sectionTitle}>Top Globales</Text>
-          <Text style={styles.sectionDescription}>
-            Estadísticas de tiempo - Los mejores tiempos
-          </Text>
+          <View style={styles.cardContent}>
+            <View style={styles.iconContainer}>
+              <Text style={styles.sectionIcon}>🏆</Text>
+            </View>
+            <View style={styles.textContainer}>
+              <Text style={styles.sectionTitle}>Top Globales</Text>
+              <Text style={styles.sectionDescription}>
+                Estadísticas de tiempo - Los mejores tiempos
+              </Text>
+            </View>
+            <Text style={styles.arrowIcon}>›</Text>
+          </View>
         </TouchableOpacity>
 
         <TouchableOpacity 
           style={styles.sectionCard}
+          activeOpacity={0.8}
           onPress={() => navigation.navigate('EasterEggs')}>
-          <Text style={styles.sectionIcon}>🥚</Text>
-          <Text style={styles.sectionTitle}>Easter Eggs</Text>
-          <Text style={styles.sectionDescription}>
-            Descubre los secretos ocultos del juego
-          </Text>
+          <View style={styles.cardContent}>
+            <View style={styles.iconContainer}>
+              <Text style={styles.sectionIcon}>🥚</Text>
+            </View>
+            <View style={styles.textContainer}>
+              <Text style={styles.sectionTitle}>Easter Eggs</Text>
+              <Text style={styles.sectionDescription}>
+                Descubre los secretos ocultos del juego
+              </Text>
+            </View>
+            <Text style={styles.arrowIcon}>›</Text>
+          </View>
         </TouchableOpacity>
       </ScrollView>
     </View>
@@ -107,33 +131,54 @@ const styles = StyleSheet.create({
   sectionCard: {
     backgroundColor: '#16213e',
     borderRadius: 15,
-    padding: 20,
-    marginBottom: 20,
+    padding: 18,
+    marginBottom: 16,
     borderWidth: 1,
     borderColor: '#0f3460',
     shadowColor: '#000',
     shadowOffset: {
       width: 0,
-      height: 2,
+      height: 3,
     },
-    shadowOpacity: 0.25,
-    shadowRadius: 3.84,
-    elevation: 5,
+    shadowOpacity: 0.3,
+    shadowRadius: 4.65,
+    elevation: 7,
+  },
+  cardContent: {
+    flexDirection: 'row',
+    alignItems: 'center',
+  },
+  iconContainer: {
+    width: 60,
+    height: 60,
+    borderRadius: 12,
+    backgroundColor: '#0f3460',
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginRight: 15,
   },
   sectionIcon: {
-    fontSize: 40,
-    marginBottom: 10,
+    fontSize: 32,
+  },
+  textContainer: {
+    flex: 1,
   },
   sectionTitle: {
-    fontSize: 20,
+    fontSize: 18,
     fontWeight: 'bold',
     color: '#fff',
-    marginBottom: 8,
+    marginBottom: 6,
   },
   sectionDescription: {
-    fontSize: 14,
+    fontSize: 13,
     color: '#aaa',
-    lineHeight: 20,
+    lineHeight: 18,
+  },
+  arrowIcon: {
+    fontSize: 28,
+    color: '#e94560',
+    fontWeight: 'bold',
+    marginLeft: 10,
   },
 });
 
