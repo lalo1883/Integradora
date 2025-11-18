@@ -85,6 +85,28 @@ const AccountScreen = () => {
             </View>
           </View>
         </View>
+
+        <View style={styles.statsSection}>
+          <Text style={styles.sectionTitle}>Estadísticas</Text>
+          <View style={styles.statsGrid}>
+            <View style={styles.statCard}>
+              <Text style={styles.statNumber}>127</Text>
+              <Text style={styles.statLabel}>Partidas</Text>
+            </View>
+            <View style={styles.statCard}>
+              <Text style={styles.statNumber}>42</Text>
+              <Text style={styles.statLabel}>Victorias</Text>
+            </View>
+            <View style={styles.statCard}>
+              <Text style={styles.statNumber}>8</Text>
+              <Text style={styles.statLabel}>Logros</Text>
+            </View>
+            <View style={styles.statCard}>
+              <Text style={styles.statNumber}>#15</Text>
+              <Text style={styles.statLabel}>Ranking</Text>
+            </View>
+          </View>
+        </View>
       </ScrollView>
     </View>
   );
@@ -227,6 +249,50 @@ const styles = StyleSheet.create({
     fontSize: 16,
     color: '#fff',
     fontWeight: '600',
+  },
+  statsSection: {
+    paddingHorizontal: 20,
+    marginTop: 20,
+  },
+  sectionTitle: {
+    fontSize: 18,
+    fontWeight: 'bold',
+    color: '#fff',
+    marginBottom: 15,
+  },
+  statsGrid: {
+    flexDirection: 'row',
+    flexWrap: 'wrap',
+    justifyContent: 'space-between',
+  },
+  statCard: {
+    width: '48%',
+    backgroundColor: '#16213e',
+    borderRadius: 12,
+    padding: 20,
+    marginBottom: 12,
+    alignItems: 'center',
+    borderWidth: 1,
+    borderColor: '#0f3460',
+    shadowColor: '#000',
+    shadowOffset: {
+      width: 0,
+      height: 2,
+    },
+    shadowOpacity: 0.1,
+    shadowRadius: 3.84,
+    elevation: 3,
+  },
+  statNumber: {
+    fontSize: 32,
+    fontWeight: 'bold',
+    color: '#e94560',
+    marginBottom: 8,
+  },
+  statLabel: {
+    fontSize: 14,
+    color: '#aaa',
+    fontWeight: '500',
   },
 });
 
