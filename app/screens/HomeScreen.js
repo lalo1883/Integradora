@@ -1,8 +1,8 @@
 import React from 'react';
-import {View, Text, StyleSheet, TouchableOpacity, Alert, Platform} from 'react-native';
+import {View, Text, StyleSheet, TouchableOpacity, Alert, Platform, ScrollView} from 'react-native';
 import {logoutUser, getCurrentUser} from '../services/authService';
 
-const HomeScreen = () => {
+const HomeScreen = ({navigation}) => {
   const user = getCurrentUser();
 
   const handleLogout = async () => {
@@ -37,15 +37,40 @@ const HomeScreen = () => {
         )}
       </View>
       
-      <View style={styles.content}>
-        <Text style={styles.subtitle}>
-          Próximamente: información del videojuego
-        </Text>
-      </View>
+      <ScrollView 
+        style={styles.scrollView}
+        contentContainerStyle={styles.scrollContent}
+        showsVerticalScrollIndicator={false}>
+        <TouchableOpacity 
+          style={styles.sectionCard}
+          onPress={() => navigation.navigate('Gameplays')}>
+          <Text style={styles.sectionIcon}>🎮</Text>
+          <Text style={styles.sectionTitle}>Gamplays del Videojuego</Text>
+          <Text style={styles.sectionDescription}>
+            Mira los mejores gameplays y estrategias
+          </Text>
+        </TouchableOpacity>
 
-      <TouchableOpacity style={styles.logoutButton} onPress={handleLogout}>
-        <Text style={styles.logoutButtonText}>Cerrar Sesión</Text>
-      </TouchableOpacity>
+        <TouchableOpacity 
+          style={styles.sectionCard}
+          onPress={() => navigation.navigate('TopGlobales')}>
+          <Text style={styles.sectionIcon}>🏆</Text>
+          <Text style={styles.sectionTitle}>Top Globales</Text>
+          <Text style={styles.sectionDescription}>
+            Estadísticas de tiempo - Los mejores tiempos
+          </Text>
+        </TouchableOpacity>
+
+        <TouchableOpacity 
+          style={styles.sectionCard}
+          onPress={() => navigation.navigate('EasterEggs')}>
+          <Text style={styles.sectionIcon}>🥚</Text>
+          <Text style={styles.sectionTitle}>Easter Eggs</Text>
+          <Text style={styles.sectionDescription}>
+            Descubre los secretos ocultos del juego
+          </Text>
+        </TouchableOpacity>
+      </ScrollView>
     </View>
   );
 };
@@ -58,7 +83,7 @@ const styles = StyleSheet.create({
   },
   header: {
     alignItems: 'center',
-    marginBottom: 40,
+    marginBottom: 30,
     paddingHorizontal: 20,
   },
   title: {
@@ -72,29 +97,43 @@ const styles = StyleSheet.create({
     color: '#e94560',
     fontWeight: '600',
   },
-  content: {
+  scrollView: {
     flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
+  },
+  scrollContent: {
     paddingHorizontal: 20,
+    paddingBottom: Platform.OS === 'ios' ? 100 : 90,
   },
-  subtitle: {
-    fontSize: 16,
-    color: '#aaa',
-    textAlign: 'center',
+  sectionCard: {
+    backgroundColor: '#16213e',
+    borderRadius: 15,
+    padding: 20,
+    marginBottom: 20,
+    borderWidth: 1,
+    borderColor: '#0f3460',
+    shadowColor: '#000',
+    shadowOffset: {
+      width: 0,
+      height: 2,
+    },
+    shadowOpacity: 0.25,
+    shadowRadius: 3.84,
+    elevation: 5,
   },
-  logoutButton: {
-    backgroundColor: '#e94560',
-    margin: 20,
-    marginBottom: Platform.OS === 'ios' ? 100 : 90,
-    borderRadius: 10,
-    padding: 15,
-    alignItems: 'center',
+  sectionIcon: {
+    fontSize: 40,
+    marginBottom: 10,
   },
-  logoutButtonText: {
-    color: '#fff',
-    fontSize: 16,
+  sectionTitle: {
+    fontSize: 20,
     fontWeight: 'bold',
+    color: '#fff',
+    marginBottom: 8,
+  },
+  sectionDescription: {
+    fontSize: 14,
+    color: '#aaa',
+    lineHeight: 20,
   },
 });
 
