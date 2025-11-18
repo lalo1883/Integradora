@@ -141,18 +141,26 @@ const styles = StyleSheet.create({
   eggCard: {
     backgroundColor: '#16213e',
     borderRadius: 12,
-    padding: 15,
+    padding: 18,
     marginBottom: 15,
     borderWidth: 1,
     borderColor: '#0f3460',
+    shadowColor: '#000',
+    shadowOffset: {
+      width: 0,
+      height: 2,
+    },
+    shadowOpacity: 0.2,
+    shadowRadius: 3.84,
+    elevation: 4,
   },
   eggHeader: {
     flexDirection: 'row',
     alignItems: 'center',
-    marginBottom: 10,
+    marginBottom: 12,
   },
   eggIcon: {
-    fontSize: 32,
+    fontSize: 36,
     marginRight: 12,
   },
   eggTitleContainer: {
@@ -168,21 +176,31 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   difficultyBadge: {
-    paddingHorizontal: 8,
-    paddingVertical: 4,
-    borderRadius: 6,
+    paddingHorizontal: 10,
+    paddingVertical: 5,
+    borderRadius: 8,
     marginLeft: 10,
+    shadowColor: '#000',
+    shadowOffset: {
+      width: 0,
+      height: 1,
+    },
+    shadowOpacity: 0.2,
+    shadowRadius: 2,
+    elevation: 2,
   },
   difficultyText: {
-    fontSize: 10,
+    fontSize: 11,
     fontWeight: 'bold',
     color: '#fff',
+    letterSpacing: 0.5,
   },
   eggDescription: {
     fontSize: 14,
     color: '#aaa',
-    lineHeight: 20,
-    marginLeft: 44,
+    lineHeight: 22,
+    marginLeft: 48,
+    paddingTop: 4,
   },
 });
 
