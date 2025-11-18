@@ -175,17 +175,19 @@ const styles = StyleSheet.create({
   header: {
     paddingHorizontal: 20,
     paddingTop: 20,
-    marginBottom: 20,
+    marginBottom: 15,
   },
   title: {
-    fontSize: 24,
+    fontSize: 26,
     fontWeight: 'bold',
     color: '#fff',
-    marginBottom: 5,
+    marginBottom: 6,
+    letterSpacing: 0.3,
   },
   subtitle: {
     fontSize: 14,
     color: '#aaa',
+    fontWeight: '400',
   },
   categoriesContainer: {
     marginBottom: 15,
@@ -202,10 +204,22 @@ const styles = StyleSheet.create({
     marginRight: 10,
     borderWidth: 1,
     borderColor: '#0f3460',
+    shadowColor: '#000',
+    shadowOffset: {
+      width: 0,
+      height: 1,
+    },
+    shadowOpacity: 0.1,
+    shadowRadius: 2,
+    elevation: 2,
   },
   categoryFilterActive: {
     backgroundColor: '#e94560',
     borderColor: '#e94560',
+    shadowColor: '#e94560',
+    shadowOpacity: 0.3,
+    shadowRadius: 4,
+    elevation: 4,
   },
   categoryFilterText: {
     fontSize: 13,
@@ -268,6 +282,7 @@ const styles = StyleSheet.create({
     color: '#fff',
     marginBottom: 12,
     lineHeight: 22,
+    letterSpacing: 0.2,
   },
   postFooter: {
     flexDirection: 'row',
@@ -320,6 +335,7 @@ const styles = StyleSheet.create({
     fontSize: 12,
     color: '#6b7280',
     fontWeight: '500',
+    marginLeft: 4,
   },
 });
 
