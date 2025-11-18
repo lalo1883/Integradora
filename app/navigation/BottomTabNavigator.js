@@ -1,7 +1,7 @@
 import React from 'react';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import {StyleSheet, Platform, Text, View} from 'react-native';
-import HomeScreen from '../screens/HomeScreen';
+import HomeStackNavigator from './HomeStackNavigator';
 import GameScreen from '../screens/GameScreen';
 import AccountScreen from '../screens/AccountScreen';
 
@@ -48,7 +48,7 @@ const BottomTabNavigator = () => {
       />
       <Tab.Screen
         name="Home"
-        component={HomeScreen}
+        component={HomeStackNavigator}
         options={{
           tabBarLabel: 'Home',
         }}
